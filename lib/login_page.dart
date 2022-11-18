@@ -16,7 +16,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("BUILD ENTREI");
     return Scaffold(
       body: Center(
         child: Padding(
@@ -24,6 +23,9 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Divider(
+                color: Colors.red,
+              ),
               Text(
                 widget.title,
                 style: const TextStyle(
@@ -47,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 25),
               TextFormFieldCustom(
                 obscureText: obscureText,
-                description: 'Senha',
+                description: 'senha',
                 prefixIcon: const Icon(Icons.key, color: Colors.blue),
                 suffixIcon: IconButton(
                   onPressed: () {
