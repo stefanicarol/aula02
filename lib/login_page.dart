@@ -1,3 +1,5 @@
+import 'package:aula02/register_page.dart';
+import 'package:aula02/reset_page.dart';
 import 'package:aula02/widget/eleveted_button_custom.dart';
 import 'package:aula02/widget/text_form_field_custom.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +25,6 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Divider(
-                color: Colors.red,
-              ),
               Text(
                 widget.title,
                 style: const TextStyle(
@@ -67,33 +66,56 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
-                  Text(
-                    "Esqueceu a senha?",
-                    style: TextStyle(
-                      color: Colors.blue,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: ((context) =>
+                              const ResetPage(title: "RESETAR"))));
+                    },
+                    child: const Text(
+                      "Esqueceu a senha?",
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 25),
-              const ElevetedButtonCustom(description: "Login"),
+              ElevetedButtonCustom(
+                  description: "Login",
+                  function: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: ((context) =>
+                            const RegisterPage(title: "HOME"))));
+                  }),
               const SizedBox(
                 height: 10,
               ),
-              RichText(
-                textAlign: TextAlign.center,
-                text: const TextSpan(
-                  style: TextStyle(color: Colors.black, fontSize: 36),
-                  children: <TextSpan>[
-                    TextSpan(text: 'Ainda não tem conta? '),
-                    TextSpan(
-                      text: 'Clique aqui\n para criar conta',
-                      style: TextStyle(color: Colors.blueAccent),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const RegisterPage(title: "Registre-se"),
                     ),
-                  ],
+                  );
+                },
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: const TextSpan(
+                    style: TextStyle(color: Colors.black, fontSize: 36),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Ainda não tem conta? '),
+                      TextSpan(
+                        text: 'Clique aqui\n para criar conta',
+                        style: TextStyle(color: Colors.blueAccent),
+                      ),
+                    ],
+                  ),
+                  textScaleFactor: 0.5,
                 ),
-                textScaleFactor: 0.5,
               )
             ],
           ),
